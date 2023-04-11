@@ -1,0 +1,31 @@
+@border: #c0c0c0;
+.ci-overview-wrapper {
+  box-sizing: border-box;
+  margin-top: 20px;
+  padding: 30px;
+  background: #fff;
+
+  .ant-descriptions-header {
+    margin-bottom: 30px;
+  }
+  .ant-descriptions-item-label {
+    font-weight: 600;
+  }
+  .ant-descriptions-item-content {
+    align-items: center;
+    .link-item:not(:last-child) {
+      position: relative;
+      margin-right: 15px;
+
+      &::after {
+        position: absolute;
+        top: 4px;
+        right: -8px;
+        bottom: 2px;
+        width: 1px;
+        background: @border;
+        content: '';
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "name": "citd",
+  "version": "0.0.1",
+  "description": "ci组件库",
+  "license": "MIT",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "father build",
+    "build:watch": "father dev",
+    "dev": "dumi dev",
+    "docs:build": "dumi build",
+    "doctor": "father doctor",
+    "lint": "npm run lint:es && npm run lint:css",
+    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
+    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "lowcode:build": "build-scripts build --config ./build.lowcode.js",
+    "lowcode:dev": "build-scripts start --config ./build.lowcode.js",
+    "prepare": "husky install && dumi setup",
+    "prepublishOnly": "father doctor && npm run build",
+    "publish:d": "npm config set registry http://registry.npmjs.org && npm publish --access=public",
+    "start": "npm run dev"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{css,less}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "@types/antd": "^1.0.0",
+    "@types/lodash": "^4.14.191",
+    "ahooks": "^3.7.4",
+    "antd": "^5.1.1",
+    "build-plugin-component": "^1.12.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@alib/build-scripts": "^0.1.32",
+    "@alifd/build-plugin-lowcode": "^0.3.10",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@umijs/lint": "^4.0.0",
+    "dumi": "^2.0.2",
+    "eslint": "^8.23.0",
+    "father": "^4.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.0.0",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "stylelint": "^14.9.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [],
+  "componentConfig": {
+    "materialSchema": "https://unpkg.com/citd@0.0.1/build/lowcode/assets-prod.json"
+  }
+}
